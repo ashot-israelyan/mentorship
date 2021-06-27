@@ -6,7 +6,7 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
 import theme from './theme';
 import { fetchEmployees } from './store/actions';
-import useMemoSelector from './hooks/useMemoSelector';
+import { useMemoSelector } from './hooks';
 import { getEmployees } from './store/selectors';
 
 const App: FC = () => {
