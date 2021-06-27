@@ -8,7 +8,7 @@ export default abstract class FetchService {
   }
 
   protected async request(url = this.apiUrl, init?: RequestInit) {
-    const response = await fetch(url || this.apiUrl, init);
+    const response = await fetch(url, init);
 
     return response.json();
   }

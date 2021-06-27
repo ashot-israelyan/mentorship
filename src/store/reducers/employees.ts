@@ -5,6 +5,7 @@ import { fetchEmployees } from '../actions';
 
 const initialState: EmployeeState = {
   items: [],
+  loading: false,
 };
 
 const employeeSlice = createSlice({
@@ -14,6 +15,13 @@ const employeeSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(fetchEmployees.fulfilled, (state, action) => {
       state.items = action.payload;
+      state.loading = false;
+    });
+    builder.addCase(fetchEmployees.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(fetchEmployees.rejected, state => {
+      state.loading = false;
     });
   },
 });

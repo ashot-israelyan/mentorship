@@ -16,9 +16,9 @@ export interface Employee {
 }
 
 export interface EmployeeState {
-  items: Employee[]
+  items: Employee[];
+  loading: boolean;
 }
-
 
 export interface IReduxState {
   readonly employees: EmployeeState;
