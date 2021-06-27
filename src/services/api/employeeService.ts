@@ -1,5 +1,5 @@
 import FetchService from './fetchService';
-import { Employee } from '../../store/reducers/employees/types';
+import { Employee } from '../../store/types';
 
 class EmployeeService extends FetchService {
   constructor() {
@@ -13,10 +13,6 @@ class EmployeeService extends FetchService {
   public async getById(id: string): Promise<Employee> {
     return this.request(`/${id}`);
   }
-
-  // public post() {
-  //   return fetch(`${this.apiUrl}`, { method: 'POST', body: null });
-  // }
 }
 
 export default new EmployeeService();

@@ -1,13 +1,7 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-import employeeService from '../../../services/api/employeeService';
-import { EmployeeState } from './types';
-
-// First, create the thunk
-export const fetchEmployees = createAsyncThunk(
-  'employees/fetchByIdStatus',
-  () => employeeService.getAll(),
-);
+import { EmployeeState } from '../../types';
+import { fetchEmployees } from '../../actions';
 
 const initialState: EmployeeState = {
   items: [],
