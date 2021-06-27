@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-import { IReduxState } from '../../types';
+import { IReduxState } from '../types';
 
 const settingsSelector = (state: IReduxState) => state.employees;
 

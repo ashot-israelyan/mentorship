@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { EmployeeState } from '../../types';
-import { fetchEmployees } from '../../actions';
+import { EmployeeState } from '../types';
+import { fetchEmployees } from '../actions';
 
 const initialState: EmployeeState = {
   items: [],
