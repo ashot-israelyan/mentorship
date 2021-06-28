@@ -13,10 +13,14 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addCase(fetchUser.fulfilled, (state, action) => {
-      state.item = {
-        ...action.payload,
-        group: action.payload.group.split(','),
-      };
+      if (!action.payload) {
+        state.item = null;
+      } else {
+        state.item = {
+          ...action.payload,
+          group: action.payload.group.split(','),
+        };
+      }
     });
   },
 });
