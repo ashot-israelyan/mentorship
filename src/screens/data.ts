@@ -18,6 +18,7 @@ const screensData: IScreen[] = [
       title: 'Basic Details',
       animationEnabled: false,
     },
+    statusBar: 'light-content',
   },
   {
     name: SCREEN_NAMES.authGroup,
