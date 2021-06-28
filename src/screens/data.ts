@@ -3,6 +3,7 @@ import { IScreen } from './types';
 import { SCREEN_NAMES } from '../constants';
 import { Basic, Group, Job } from './Authorization';
 import UserProfile from './Profile/UserProfile';
+import EditGroup from './Profile/EditGroup';
 
 const screensData: IScreen[] = [
   {
@@ -41,6 +42,13 @@ const screensData: IScreen[] = [
     options: {
       title: 'User Profile',
       animationEnabled: false,
+    },
+  },
+  {
+    name: SCREEN_NAMES.editGroup,
+    component: EditGroup,
+    options: {
+      title: 'Edit Group',
     },
   },
 ];

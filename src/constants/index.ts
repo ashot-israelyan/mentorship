@@ -6,6 +6,7 @@ export const SCREEN_NAMES = {
   authGroup: 'Authorization_Group',
   authJob: 'Authorization_Job',
   profilePage: 'Profile_page',
+  editGroup: 'Edit_group',
 };
 
 export const STORAGE_KEYS = {

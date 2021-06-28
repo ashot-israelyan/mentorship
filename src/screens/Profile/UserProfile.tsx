@@ -11,6 +11,10 @@ import { IScreenBase } from '../types';
 const UserProfile: FC<IScreenBase> = ({ navigation }) => {
   const dispatch = useDispatch();
 
+  const onEditPress = useCallback(() => {
+    navigation.navigate(SCREEN_NAMES.editGroup);
+  }, [navigation]);
+
   const onLogout = useCallback(async () => {
     await AsyncStorage.removeItem(STORAGE_KEYS.isLoggedIn);
     await AsyncStorage.removeItem(STORAGE_KEYS.userId);
@@ -22,7 +26,7 @@ const UserProfile: FC<IScreenBase> = ({ navigation }) => {
 
   return (
     <Center flex={1}>
-      <Button variant="ghost">Edit group</Button>
+      <Button variant="ghost" onPress={onEditPress}>Edit group</Button>
       <Button onPress={onLogout}>Logout</Button>
     </Center>
   );

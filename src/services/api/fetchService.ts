@@ -20,10 +20,13 @@ import { API_ENDPOINT } from '../../constants';
 
   public async create<T extends object>(url: string, data: T): Promise<T & { id: string }> {
     const body = FetchService.generateCreateBody(data);
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
     return this.request(url, {
       method: 'POST',
       body,
+      headers,
     });
   }
 
