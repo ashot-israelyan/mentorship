@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
-import { useTheme } from 'react-native-elements';
 import { StatusBar } from 'react-native';
 import { StackHeaderOptions } from '@react-navigation/stack/src/types';
+import { useTheme } from 'native-base';
 
 import screensData from './data';
 import { SCREEN_NAMES } from '../constants';
@@ -11,16 +11,16 @@ import { SCREEN_NAMES } from '../constants';
 const Stack = createStackNavigator();
 
 const Screens = () => {
-  const { theme } = useTheme();
+  const { colors } = useTheme();
 
   const screenOptions: StackHeaderOptions = useMemo(() => {
     return {
       headerStyle: {
-        backgroundColor: theme.colors?.primary,
+        backgroundColor: colors.primary[500],
       },
-      headerTintColor: theme.colors?.white,
+      headerTintColor: colors.white,
     };
-  }, [theme.colors?.primary, theme.colors?.white]);
+  }, [colors.primary, colors.white]);
 
   return (
     <Stack.Navigator initialRouteName={SCREEN_NAMES.loading} screenOptions={screenOptions}>

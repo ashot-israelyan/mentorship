@@ -2,8 +2,8 @@ import React, { FC, useEffect } from 'react';
 
 import { ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { Center } from 'native-base';
 
-import { Center } from '../components';
 import { IScreenBase } from './types';
 import { SCREEN_NAMES, STORAGE_KEYS } from '../constants';
 
@@ -23,7 +23,7 @@ const Loading: FC<IScreenBase> = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <Center>
+    <Center flex={1}>
       <ActivityIndicator size="large" />
     </Center>
   );
