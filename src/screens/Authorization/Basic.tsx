@@ -12,6 +12,16 @@ import { IScreenBase } from '../types';
 import { SCREEN_NAMES } from '../../constants';
 import { FormWrapper } from '../../containers';
 
+const formData = [{
+  id: 1,
+  name: 'firstName',
+  placeholder: 'Your Name'
+}, {
+  id: 2,
+  name: 'lastName',
+  placeholder: 'Your Surname',
+}];
+
 const Basic: FC<IScreenBase> = ({ navigation }) => {
   const { spacing, colors } = useTheme();
   const { control, handleSubmit } = useForm<BasicFormValues>();
@@ -36,31 +46,22 @@ const Basic: FC<IScreenBase> = ({ navigation }) => {
     <>
       <Camera isOpen={isCameraOpen} onSnap={onPictureSnap} />
       <FormWrapper>
-        <Controller
-          control={control}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              placeholder="Your Name"
-            />
-          )}
-          name="firstName"
-        />
-        <Controller
-          control={control}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              placeholder="Your Surname"
-              style={fieldStyle}
-            />
-          )}
-          name="lastName"
-        />
+        {formData.map((item, idx) => (
+          <Controller
+            key={item.id}
+            control={control}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+                placeholder={item.placeholder}
+                {...(idx > 0 ? { style: fieldStyle } : {})}
+              />
+            )}
+            name={item.name}
+          />
+        ))}
         <Controller
           control={control}
           render={({ field: { onChange, value } }) => (
