@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import employeeService from '../../services/api/employeeService';
+import fetchService from '../../services/api/fetchService';
 
 export const fetchEmployees = createAsyncThunk(
-  'employees/fetchByIdStatus',
-  () => employeeService.getAll(),
+  'employees/fetchById',
+  () => fetchService.request('/employees'),
 );

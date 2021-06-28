@@ -2,9 +2,9 @@ import { createSelector } from '@reduxjs/toolkit';
 
 import { IReduxState } from '../types';
 
-const settingsSelector = (state: IReduxState) => state.employees;
+const employeeSelector = (state: IReduxState) => state.employees;
 
 export const getEmployees = createSelector(
-  settingsSelector,
+  employeeSelector,
   employees => employees.items,
 );

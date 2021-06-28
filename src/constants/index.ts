@@ -10,4 +10,5 @@ export const SCREEN_NAMES = {
 
 export const STORAGE_KEYS = {
   isLoggedIn: 'isLoggedIn',
+  userId: 'userId',
 };

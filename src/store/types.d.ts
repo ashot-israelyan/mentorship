@@ -33,7 +33,17 @@ export interface AuthorizationState {
 export type BasicFormValues = Pick<AuthorizationState, 'firstName' | 'lastName' | 'profilePicture' | 'currentLocation'>;
 export type JobFormValues = Pick<AuthorizationState, 'department' | 'jobTitle'>;
 
+interface User extends AuthorizationState {
+  id: string;
+  createdAt: string;
+}
+
+export interface UserState {
+  item: User | null
+}
+
 export interface IReduxState {
   readonly employees: EmployeeState;
   readonly authorization: AuthorizationState;
+  readonly user: UserState;
 }

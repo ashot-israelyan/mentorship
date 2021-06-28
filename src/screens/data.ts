@@ -2,6 +2,7 @@ import Loading from './Loading';
 import { IScreen } from './types';
 import { SCREEN_NAMES } from '../constants';
 import { Basic, Group, Job } from './Authorization';
+import UserProfile from './Profile/UserProfile';
 
 const screensData: IScreen[] = [
   {
@@ -32,6 +33,14 @@ const screensData: IScreen[] = [
     component: Job,
     options: {
       title: 'Job Details',
+    },
+  },
+  {
+    name: SCREEN_NAMES.profilePage,
+    component: UserProfile,
+    options: {
+      title: 'User Profile',
+      animationEnabled: false,
     },
   },
 ];

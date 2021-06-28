@@ -81,9 +81,7 @@ const Basic: FC<IScreenBase> = ({ navigation }) => {
           </Center>
         )}
         <Button variant="ghost" onPress={() => setIsCameraOpen(true)}>
-          <Text>
-            Capture photo
-          </Text>
+          Capture photo
         </Button>
         <Button style={fieldStyle} onPress={handleSubmit(onSubmit)}>
           <Text style={{ color: colors.white }}>
