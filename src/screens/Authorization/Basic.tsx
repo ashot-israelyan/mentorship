@@ -1,27 +1,29 @@
 import React, { FC, useCallback, useState } from 'react';
 
-import { Avatar, Box, Button, Center, Input, Text, useTheme } from 'native-base';
+import { Avatar, Button, Center, Input, Text, useTheme } from 'native-base';
 import { useForm, Controller } from 'react-hook-form';
 import { TakePictureResponse } from 'react-native-camera';
 import { useDispatch } from 'react-redux';
 
 import { Camera, Location } from '../../components';
 import authorizationSlice from '../../store/reducers/authorization';
-import { AuthorizationState } from '../../store/types';
+import { BasicFormValues } from '../../store/types';
+import { IScreenBase } from '../types';
+import { SCREEN_NAMES } from '../../constants';
+import { FormWrapper } from '../../containers';
 
-type FormValues = Pick<AuthorizationState, 'firstName' | 'lastName' | 'profilePicture' | 'currentLocation'>
-
-const Basic: FC = () => {
+const Basic: FC<IScreenBase> = ({ navigation }) => {
   const { spacing, colors } = useTheme();
-  const { control, handleSubmit } = useForm<FormValues>();
+  const { control, handleSubmit } = useForm<BasicFormValues>();
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [avatar, setAvatar] = useState('');
 
   const dispatch = useDispatch();
 
-  const onSubmit = useCallback((data: FormValues) => {
+  const onSubmit = useCallback((data: BasicFormValues) => {
     dispatch(authorizationSlice.actions.updateBasic({ ...data, profilePicture: avatar }));
-  }, [avatar, dispatch]);
+    navigation.navigate(SCREEN_NAMES.authJob);
+  }, [avatar, dispatch, navigation]);
 
   const onPictureSnap = useCallback((data: TakePictureResponse) => {
     setAvatar(data.uri);
@@ -33,7 +35,7 @@ const Basic: FC = () => {
   return (
     <>
       <Camera isOpen={isCameraOpen} onSnap={onPictureSnap} />
-      <Box style={{ marginTop: spacing.baseMargin, padding: spacing.basePadding, zIndex: 1 }}>
+      <FormWrapper>
         <Controller
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
@@ -88,7 +90,7 @@ const Basic: FC = () => {
             Next
           </Text>
         </Button>
-      </Box>
+      </FormWrapper>
     </>
   );
 };

@@ -25,7 +25,12 @@ export interface AuthorizationState {
   lastName: string;
   currentLocation: string;
   profilePicture: string;
+  department: string;
+  jobTitle: string;
 }
+
+export type BasicFormValues = Pick<AuthorizationState, 'firstName' | 'lastName' | 'profilePicture' | 'currentLocation'>;
+export type JobFormValues = Pick<AuthorizationState, 'department' | 'jobTitle'>;
 
 export interface IReduxState {
   readonly employees: EmployeeState;

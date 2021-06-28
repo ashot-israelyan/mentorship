@@ -1,30 +1,29 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { AuthorizationState } from '../types';
+import { AuthorizationState, BasicFormValues, JobFormValues } from '../types';
 
 const initialState: AuthorizationState = {
   firstName: '',
   lastName: '',
   profilePicture: '',
   currentLocation: '',
+  department: '',
+  jobTitle: '',
 };
 
 const authorizationSlice = createSlice({
   name: 'authorization',
   initialState,
   reducers: {
-    updateBasic: (state, {
-      payload: {
-        firstName,
-        lastName,
-        profilePicture,
-        currentLocation,
-      },
-    }: PayloadAction<Pick<AuthorizationState, 'firstName' | 'lastName' | 'profilePicture' | 'currentLocation'>>) => {
-      state.firstName = firstName;
-      state.lastName = lastName;
-      state.profilePicture = profilePicture;
-      state.currentLocation = currentLocation;
+    updateBasic: (state, { payload }: PayloadAction<BasicFormValues>) => {
+      state.firstName = payload.firstName;
+      state.lastName = payload.lastName;
+      state.profilePicture = payload.profilePicture;
+      state.currentLocation = payload.currentLocation;
+    },
+    updateJob: (state, {payload}: PayloadAction<JobFormValues>) => {
+      state.jobTitle = payload.jobTitle;
+      state.department = payload.department;
     },
   },
 });
