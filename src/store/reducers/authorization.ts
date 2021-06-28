@@ -9,6 +9,7 @@ const initialState: AuthorizationState = {
   currentLocation: '',
   department: '',
   jobTitle: '',
+  group: [],
 };
 
 const authorizationSlice = createSlice({
@@ -24,6 +25,9 @@ const authorizationSlice = createSlice({
     updateJob: (state, {payload}: PayloadAction<JobFormValues>) => {
       state.jobTitle = payload.jobTitle;
       state.department = payload.department;
+    },
+    updateGroup: (state, { payload }: PayloadAction<Pick<AuthorizationState, 'group'>>) => {
+      state.group = payload.group;
     },
   },
 });

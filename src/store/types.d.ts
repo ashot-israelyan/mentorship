@@ -27,6 +27,7 @@ export interface AuthorizationState {
   profilePicture: string;
   department: string;
   jobTitle: string;
+  group: string[];
 }
 
 export type BasicFormValues = Pick<AuthorizationState, 'firstName' | 'lastName' | 'profilePicture' | 'currentLocation'>;
