@@ -1,18 +1,21 @@
 import React, { FC } from 'react';
 
-import { Button, ThemeProvider } from 'react-native-elements';
+import { ThemeProvider } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import Screens from './screens';
 import theme from './theme';
 
 const App: FC = () => {
   return (
     <NavigationContainer>
       <ThemeProvider theme={theme}>
-        <Button title="hello" />
+        <SafeAreaProvider>
+          <Screens />
+        </SafeAreaProvider>
       </ThemeProvider>
     </NavigationContainer>
-
   );
 };
 

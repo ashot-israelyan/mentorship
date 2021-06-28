@@ -1,4 +1,4 @@
-import { API_ENDPOINT } from '../../configs';
+import { API_ENDPOINT } from '../../constants';
 
 export default abstract class FetchService {
   apiUrl: string;
