@@ -20,6 +20,14 @@ export interface EmployeeState {
   loading: boolean;
 }
 
+export interface AuthorizationState {
+  firstName: string;
+  lastName: string;
+  currentLocation: string;
+  profilePicture: string;
+}
+
 export interface IReduxState {
   readonly employees: EmployeeState;
+  readonly authorization: AuthorizationState;
 }
