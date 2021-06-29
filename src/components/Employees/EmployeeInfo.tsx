@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { Stack, Text } from 'native-base';
 
-import { IEmployeeInfo } from './types';
+import { IEmployeeInfo } from '../types';
 
 const EmployeeInfo: FC<IEmployeeInfo> = ({ title, label, subLabel = null }) => {
 return (

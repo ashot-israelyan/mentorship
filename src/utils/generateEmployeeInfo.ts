@@ -1,5 +1,5 @@
 import { Employee } from '../store/types';
-import { IEmployeeInfo } from '../components/EmployeeList/types';
+import { IEmployeeInfo } from '../components/types';
 
 const generateEmployeeInfo = (empolyee: Employee): IEmployeeInfo[] => {
   return [

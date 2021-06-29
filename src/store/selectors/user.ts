@@ -10,9 +10,14 @@ export const getUser = createSelector(
   user => user.item,
 );
 
-export const getUserGroup = createSelector(
+export const getUserGroupEmployees = createSelector(
   [getUser, getEmployees],
   (user, employees) => {
     return employees.filter(el => user?.group.includes(el.id));
   },
+);
+
+export const getUserGroup = createSelector(
+  getUser,
+  user => user?.group || [],
 );

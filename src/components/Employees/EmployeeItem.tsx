@@ -1,22 +1,24 @@
 import React, { FC, useCallback, useMemo } from 'react';
 
 import { StyleSheet } from 'react-native';
-import { Avatar, List, Stack, useTheme } from 'native-base';
+import { Avatar, Button, Stack, useTheme } from 'native-base';
 
 import EmployeeInfo from './EmployeeInfo';
 import { generateEmployeeInfo } from '../../utils';
-import { IEmployeeItem } from './types';
+import { IEmployeeItem } from '../types';
 
-const EmployeeItem: FC<IEmployeeItem> = ({ item, selected = false, onPress }) => {
+const EmployeeItem: FC<IEmployeeItem> = ({ item, selected = false, onPress, onLongPress }) => {
   const { colors } = useTheme();
   const employeeInfo = useMemo(() => generateEmployeeInfo(item), [item]);
 
   const onEmployeePress = useCallback(() => {
-    onPress(item.id);
+    if (typeof onPress === 'function') {
+      onPress(item.id);
+    }
   }, [item.id, onPress]);
 
   return (
-    <List.Item key={item.id} onPress={onEmployeePress}>
+    <Button onLongPress={onLongPress} onPress={onEmployeePress} variant="unstyled">
       <Stack width="100%" direction="row" style={[styles.container, { backgroundColor: selected ? colors.green[500] : 'transparent' }]}>
         <Avatar source={{ uri: item.profile_picture }} size="md">{item.first_name.substring(0, 1)}</Avatar>
         <Stack direction="column" style={styles.username}>
@@ -25,7 +27,7 @@ const EmployeeItem: FC<IEmployeeItem> = ({ item, selected = false, onPress }) =>
           ))}
         </Stack>
       </Stack>
-    </List.Item>
+    </Button>
   );
 };
 

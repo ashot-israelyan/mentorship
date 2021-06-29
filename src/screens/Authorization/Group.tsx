@@ -14,6 +14,7 @@ import authorizationSlice from '../../store/reducers/authorization';
 import { SCREEN_NAMES, STORAGE_KEYS } from '../../constants';
 import fetchService from '../../services/api/fetchService';
 import { IScreenBase } from '../types';
+import { User } from '../../store/types';
 
 const Group: FC<IScreenBase> = ({ navigation }) => {
   const { employees, authData } = useMemoSelector(state => ({
@@ -35,7 +36,7 @@ const Group: FC<IScreenBase> = ({ navigation }) => {
     const data = { group: selectedEmployees };
     dispatch(authorizationSlice.actions.updateGroup(data));
 
-    const response = await fetchService.create('/users',{
+    const response = await fetchService.create<Partial<User>>('/users',{
       ...authData,
       ...data,
     });
