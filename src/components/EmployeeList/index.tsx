@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 
-import { VirtualizedList } from 'react-native';
+import { ListRenderItemInfo, VirtualizedList } from 'react-native';
 
 import { IEmployeesList } from './types';
 import EmployeeItem from './EmployeeItem';
@@ -23,6 +23,10 @@ const EmployeeList: FC<IEmployeesList> = ({ employees, setEmployees }) => {
     });
   }, []);
 
+  const renderItem = useCallback(({ item }: ListRenderItemInfo<Employee>) => {
+    return  <EmployeeItem item={item} selected={selectedEmployees.has(item.id)} onPress={onEmployeeSelect} />;
+  }, [onEmployeeSelect, selectedEmployees]);
+
   useEffect(() => {
     setEmployees([...selectedEmployees]);
   }, [selectedEmployees, setEmployees]);
@@ -30,8 +34,8 @@ const EmployeeList: FC<IEmployeesList> = ({ employees, setEmployees }) => {
   return (
     <VirtualizedList
       data={employees}
-      initialNumToRender={10}
-      renderItem={({ item }) => <EmployeeItem item={item} selected={selectedEmployees.has(item.id)} onPress={onEmployeeSelect} />}
+      initialNumToRender={5}
+      renderItem={renderItem}
       keyExtractor={item => item.id}
       getItemCount={getItemCount}
       getItem={getItem}
