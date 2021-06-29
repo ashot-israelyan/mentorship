@@ -29,8 +29,8 @@ const authorizationSlice = createSlice({
     updateGroup: (state, { payload }: PayloadAction<Pick<AuthorizationState, 'group'>>) => {
       state.group = payload.group;
     },
-    reset: state => {
-      state = {...initialState};
+    reset: () => {
+      return initialState;
     },
   },
 });
