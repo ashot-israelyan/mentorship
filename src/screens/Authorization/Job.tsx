@@ -1,6 +1,5 @@
 import React, { FC, useCallback } from 'react';
 
-import { Text } from 'react-native';
 import { Button, Input, useTheme } from 'native-base';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -10,19 +9,10 @@ import { JobFormValues } from '../../store/types';
 import { FormWrapper } from '../../containers';
 import authorizationSlice from '../../store/reducers/authorization';
 import { SCREEN_NAMES } from '../../constants';
-
-const formData = [{
-  id: 1,
-  name: 'department',
-  placeholder: 'Department',
-}, {
-  id: 2,
-  name: 'jobTitle',
-  placeholder: 'Job Title',
-}];
+import { jobFormData } from './data';
 
 const Job: FC<IScreenBase> = ({ navigation }) => {
-  const { spacing, colors } = useTheme();
+  const { spacing } = useTheme();
   const { control, handleSubmit } = useForm<JobFormValues>();
   const dispatch = useDispatch();
 
@@ -35,7 +25,7 @@ const Job: FC<IScreenBase> = ({ navigation }) => {
 
   return (
     <FormWrapper>
-      {formData.map((item, idx) => (
+      {jobFormData.map((item, idx) => (
         <Controller
           key={item.id}
           control={control}
@@ -52,9 +42,7 @@ const Job: FC<IScreenBase> = ({ navigation }) => {
         />
       ))}
       <Button style={fieldStyle} onPress={handleSubmit(onSubmit)}>
-        <Text style={{ color: colors.white }}>
-          Next
-        </Text>
+        Next
       </Button>
     </FormWrapper>
   );

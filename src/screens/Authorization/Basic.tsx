@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useState } from 'react';
 
-import { Avatar, Button, Center, Input, Text, useTheme } from 'native-base';
+import { Avatar, Button, Center, Input, useTheme } from 'native-base';
 import { useForm, Controller } from 'react-hook-form';
 import { TakePictureResponse } from 'react-native-camera';
 import { useDispatch } from 'react-redux';
@@ -11,19 +11,10 @@ import { BasicFormValues } from '../../store/types';
 import { IScreenBase } from '../types';
 import { SCREEN_NAMES } from '../../constants';
 import { FormWrapper } from '../../containers';
-
-const formData = [{
-  id: 1,
-  name: 'firstName',
-  placeholder: 'Your Name'
-}, {
-  id: 2,
-  name: 'lastName',
-  placeholder: 'Your Surname',
-}];
+import { basicFormData } from './data';
 
 const Basic: FC<IScreenBase> = ({ navigation }) => {
-  const { spacing, colors } = useTheme();
+  const { spacing } = useTheme();
   const { control, handleSubmit } = useForm<BasicFormValues>();
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [avatar, setAvatar] = useState('');
@@ -46,7 +37,7 @@ const Basic: FC<IScreenBase> = ({ navigation }) => {
     <>
       <Camera isOpen={isCameraOpen} onSnap={onPictureSnap} />
       <FormWrapper>
-        {formData.map((item, idx) => (
+        {basicFormData.map((item, idx) => (
           <Controller
             key={item.id}
             control={control}
@@ -85,9 +76,7 @@ const Basic: FC<IScreenBase> = ({ navigation }) => {
           Capture photo
         </Button>
         <Button style={fieldStyle} onPress={handleSubmit(onSubmit)}>
-          <Text style={{ color: colors.white }}>
-            Next
-          </Text>
+          Next
         </Button>
       </FormWrapper>
     </>

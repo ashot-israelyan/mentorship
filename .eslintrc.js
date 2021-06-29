@@ -95,7 +95,8 @@ module.exports = {
     // react-native
     'react-native/no-unused-styles': 2,
     'react-native/split-platform-components': 2,
-    'react-native/no-raw-text': 2,
+    // Is needed because native-base automatically wraps the Texts into appropriate tag
+    'react-native/no-raw-text': "off",
     'react-native/no-single-element-style-arrays': 2,
     'react-native/no-inline-styles': 0,
     'prettier/prettier': 0,

@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { ActivityIndicator } from 'react-native';
-import { Box, Button, Center, Stack, Text, useTheme } from 'native-base';
+import { Box, Button, Center, Stack } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import { FormWrapper } from '../../containers';
@@ -16,7 +16,6 @@ import fetchService from '../../services/api/fetchService';
 import { IScreenBase } from '../types';
 
 const Group: FC<IScreenBase> = ({ navigation }) => {
-  const { colors } = useTheme();
   const { employees, authData } = useMemoSelector(state => ({
     employees: getEmployees(state),
     authData: authorizationData(state),
@@ -69,9 +68,7 @@ const Group: FC<IScreenBase> = ({ navigation }) => {
           <EmployeeList employees={employees} setEmployees={updateSelectedEmployees} />
         </Box>
         <Button onPress={onSubmit}>
-          <Text style={{ color: colors.white }}>
-            Save
-          </Text>
+          Save
         </Button>
       </Stack>
     </FormWrapper>
